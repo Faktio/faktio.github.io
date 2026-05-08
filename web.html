@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faktio — Vigilancia de telefonía para PYMEs</title>
+<meta name="description" content="Vigilamos la telefonía de tu empresa y te avisamos exactamente cuándo puedes ahorrar. Sin compromiso, sin letra pequeña.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --green: #1a9e6e;
+    --green-light: #e1f5ee;
+    --green-dark: #085041;
+    --green-mid: #0F6E56;
+    --text: #1a1a1a;
+    --text-mid: #555;
+    --text-light: #888;
+    --border: rgba(0,0,0,0.08);
+    --bg: #fff;
+    --bg-soft: #f8f9f7;
+    --red: #E24B4A;
+    --amber: #EF9F27;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--green);
+    letter-spacing: -0.5px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    color: var(--text-mid);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .btn-nav {
+    background: var(--green);
+    color: white !important;
+    padding: 0.55rem 1.25rem;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+
+  .btn-nav:hover { opacity: 0.88; }
+
+  /* HERO */
+  .hero {
+    padding: 5rem 2rem 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--green);
+    background: var(--green-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 38px;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.5px;
+  }
+
+  .hero p {
+    font-size: 16px;
+    color: var(--text-mid);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+
+  .hero-btns {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--green);
+    color: white;
+    padding: 0.8rem 1.75rem;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .btn-ghost {
+    font-size: 14px;
+    color: var(--text-mid);
+    transition: color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--text); }
+
+  /* HERO PANEL */
+  .hero-panel {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+  }
+
+  .stat-big {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-mid);
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+
+  .alerts { display: flex; flex-direction: column; gap: 0.6rem; }
+
+  .alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .alert.red { background: #FCEBEB; color: #7A2020; }
+  .alert.amber { background: #FAEEDA; color: #6B3C08; }
+  .alert.green { background: var(--green-light); color: var(--green-dark); }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .dot.r { background: var(--red); }
+  .dot.a { background: var(--amber); }
+  .dot.g { background: var(--green); }
+
+  /* DIVIDER */
+  .divider {
+    text-align: center;
+    padding: 0.9rem 2rem;
+    font-size: 12px;
+    color: var(--text-light);
+    background: var(--bg-soft);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 0.3px;
+  }
+
+  /* SECTIONS */
+  section { padding: 4rem 2rem; }
+  section.alt { background: var(--bg-soft); }
+
+  .section-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--green);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.3px;
+  }
+
+  /* STEPS */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .step {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    transition: transform 0.2s;
+  }
+
+  .step:hover { transform: translateY(-3px); }
+
+  .step-num {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--green-light);
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .step h3 {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: var(--text);
+  }
+
+  .step p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* VENTAJAS */
+  .ventajas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .vcard {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.25rem;
+    transition: transform 0.2s;
+  }
+
+  .vcard:hover { transform: translateY(-3px); }
+
+  .vcard-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--green-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.85rem;
+  }
+
+  .vcard-icon svg { width: 18px; height: 18px; stroke: var(--green); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  .vcard h3 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 0.35rem; }
+  .vcard p { font-size: 13px; color: var(--text-mid); line-height: 1.55; }
+
+  /* DARK QUOTE */
+  .dark-quote {
+    background: var(--green-dark);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .dark-quote blockquote {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: white;
+    max-width: 600px;
+    margin: 0 auto 0.75rem;
+    line-height: 1.4;
+    letter-spacing: -0.3px;
+  }
+
+  .dark-quote p {
+    font-size: 13px;
+    color: #9FE1CB;
+    letter-spacing: 0.3px;
+  }
+
+  /* ALERTAS */
+  .alertas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
+  .alerta {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 1rem 1.1rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.55;
+    transition: border-color 0.2s;
+  }
+
+  .alerta:hover { border-color: rgba(0,0,0,0.15); }
+  .alerta .dot { margin-top: 5px; }
+
+  /* GARANTIA */
+  .garantia {
+    background: var(--green-light);
+    border-top: 1px solid #9FE1CB;
+    border-bottom: 1px solid #9FE1CB;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .garantia h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: var(--green-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .garantia p { font-size: 15px; color: var(--green-mid); max-width: 480px; margin: 0 auto; line-height: 1.65; }
+  .garantia small { display: block; margin-top: 0.5rem; font-size: 12px; color: var(--green); }
+
+  /* PRECIO */
+  .precio-wrap { max-width: 400px; margin: 0 auto; }
+
+  .precio-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+
+  .precio-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 0.2rem;
+  }
+
+  .precio-num span { font-family: 'DM Sans', sans-serif; font-size: 17px; color: var(--text-mid); font-weight: 400; }
+
+  .precio-sub {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .precio-list { list-style: none; margin-bottom: 1.75rem; }
+
+  .precio-list li {
+    font-size: 13px;
+    color: var(--text-mid);
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .check {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    stroke: var(--green);
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--green);
+    color: white;
+    padding: 0.9rem;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+
+  .btn-block:hover { opacity: 0.88; }
+
+  /* CTA */
+  .cta-section {
+    text-align: center;
+    padding: 5rem 2rem;
+  }
+
+  .cta-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.3px;
+  }
+
+  .cta-section p {
+    font-size: 16px;
+    color: var(--text-mid);
+    max-width: 440px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 1.75rem 2rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg);
+  }
+
+  footer p { font-size: 12px; color: var(--text-light); }
+
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 12px; color: var(--text-light); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.25rem; }
+    .hero h1 { font-size: 28px; }
+    .steps { grid-template-columns: 1fr; }
+    .ventajas-grid { grid-template-columns: repeat(2, 1fr); }
+    .alertas-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .dark-quote blockquote { font-size: 20px; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="logo">faktio</span>
+  <div class="nav-links">
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#ventajas">Ventajas</a>
+    <a href="#precio">Precio</a>
+    <a href="#contacto" class="btn-nav">Contratar ahora</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="max-width: 1000px; margin: 0 auto;">
+  <div class="hero">
+    <div>
+      <span class="hero-tag">Para PYMEs españolas</span>
+      <h1>¿Sabes realmente cuánto pagas de más en telefonía?</h1>
+      <p>Vigilamos la telefonía de tu empresa y te avisamos exactamente cuándo puedes ahorrar. Sin compromiso, sin letra pequeña.</p>
+      <div class="hero-btns">
+        <a href="#contacto" class="btn-primary">Contratar por 19€/mes</a>
+        <a href="#como-funciona" class="btn-ghost">Cómo funciona →</a>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="stat-big">7 de cada 10</div>
+      <div class="stat-label">PYMEs pagan servicios de telefonía que no necesitan o desconocen</div>
+      <div class="alerts">
+        <div class="alert red"><div class="dot r"></div>Permanencia vence en 12 días — momento ideal para negociar</div>
+        <div class="alert amber"><div class="dot a"></div>Descuento caduca el próximo mes — factura subirá 40€</div>
+        <div class="alert amber"><div class="dot a"></div>2 líneas sin actividad — coste mensual invisible: 28€</div>
+        <div class="alert green"><div class="dot g"></div>Todo lo demás en orden</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">Independiente de cualquier operador &nbsp;·&nbsp; Cuota fija y transparente &nbsp;·&nbsp; 100% digital</div>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="section-inner">
+    <p class="section-label">Así de fácil</p>
+    <h2 class="section-title">Tres pasos, cero complicaciones</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Regístrate una vez</h3>
+        <p>Comparte tus datos de telefonía en menos de 5 minutos. Solo lo haces una vez.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Faktio trabaja en silencio</h3>
+        <p>Analizamos tu situación y programamos alertas automáticas sobre todas las fechas clave.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Tú decides cuándo actuar</h3>
+        <p>Recibes avisos cuando hay dinero en juego. La decisión siempre es tuya.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VENTAJAS -->
+<section class="alt" id="ventajas">
+  <div class="section-inner">
+    <p class="section-label">¿Por qué Faktio?</p>
+    <h2 class="section-title">Todo lo que necesitas, nada que no necesitas</h2>
+    <div class="ventajas-grid">
+      <div class="vcard">
+        <div class="vcard-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </div>
+        <h3>Automático</h3>
+        <p>Trabajamos en silencio. Solo aparecemos cuando importa.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Independiente</h3>
+        <p>Ningún operador está detrás. Solo trabajamos para ti.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard-icon">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h3>Especialistas</h3>
+        <p>Solo telefonía. No somos generalistas de todo.</p>
+      </div>
+      <div class="vcard">
+        <div class="vcard-icon">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Sin sorpresas</h3>
+        <p>19€/mes fijos. Sin comisiones ni letras pequeñas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="dark-quote">
+  <blockquote>"Tu operadora no te avisará cuando puedas negociar. Faktio sí."</blockquote>
+  <p>Vigilancia continua &nbsp;·&nbsp; Alertas automáticas &nbsp;·&nbsp; Sin intervención manual</p>
+</div>
+
+<!-- ALERTAS -->
+<section>
+  <div class="section-inner">
+    <p class="section-label">Alertas inteligentes</p>
+    <h2 class="section-title">Sabrás exactamente cuándo actuar</h2>
+    <div class="alertas-grid">
+      <div class="alerta"><div class="dot r"></div>Permanencia a punto de vencer — momento ideal para negociar</div>
+      <div class="alerta"><div class="dot a"></div>Descuento que caduca en 15 días — actúa antes de que suba la factura</div>
+      <div class="alerta"><div class="dot r"></div>Líneas sin uso detectadas — estás pagando por algo que nadie usa</div>
+      <div class="alerta"><div class="dot a"></div>Subida de precios anunciada — te avisamos antes que a nadie</div>
+      <div class="alerta"><div class="dot g"></div>Todo en orden — informe mensual con el estado real de tu telefonía</div>
+      <div class="alerta"><div class="dot a"></div>Servicios contratados que no se usan — coste invisible mes a mes</div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<div class="garantia">
+  <h2>Garantía real, sin asteriscos</h2>
+  <p>Si en 3 meses Faktio no detecta ninguna situación de ahorro, te devolvemos el dinero íntegro.</p>
+  <small>En la práctica casi nunca ocurre. Siempre hay algo que revisar.</small>
+</div>
+
+<!-- PRECIO -->
+<section class="alt" id="precio">
+  <div class="section-inner">
+    <p class="section-label">Precio</p>
+    <h2 class="section-title">Simple y transparente</h2>
+    <div class="precio-wrap">
+      <div class="precio-card">
+        <div class="precio-num">19€ <span>/mes</span></div>
+        <div class="precio-sub">Por empresa · Sin permanencia · Cancela cuando quieras</div>
+        <ul class="precio-list">
+          <li><svg class="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Informe de situación inicial en 48h</li>
+          <li><svg class="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Alertas de permanencias y descuentos</li>
+          <li><svg class="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Informe mensual con semáforo visual</li>
+          <li><svg class="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Detección de líneas y servicios sin uso</li>
+          <li><svg class="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Resumen anual con estimación de ahorro</li>
+          <li><svg class="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Sin comisiones por cambio de operadora</li>
+        </ul>
+        <a href="#contacto" class="btn-block">Contratar ahora</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section" id="contacto">
+  <h2>¿Cuánto estás pagando de más?</h2>
+  <p>Regístrate en 5 minutos y en menos de 48 horas sabrás exactamente en qué situación está la telefonía de tu empresa.</p>
+  <a href="mailto:hola@faktio.es" class="btn-primary" style="font-size: 15px; padding: 0.9rem 2.25rem;">Empezar ahora</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Faktio · faktio.es</p>
+  <div class="footer-links">
+    <a href="#">Privacidad</a>
+    <a href="#">Condiciones</a>
+    <a href="mailto:hola@faktio.es">Contacto</a>
+  </div>
+</footer>
+
+</body>
+</html>

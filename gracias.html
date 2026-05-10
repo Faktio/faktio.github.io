@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Gracias! — Faktio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; font-size: 16px; color: #1a1a1a; background: #fff; line-height: 1.7; min-height: 100vh; display: flex; flex-direction: column; }
+  a { color: #1a9e6e; text-decoration: none; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; border-bottom: 1px solid rgba(0,0,0,0.08); background: #fff; }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 22px; color: #1a9e6e; }
+  .content { flex: 1; display: flex; align-items: center; justify-content: center; padding: 4rem 2rem; text-align: center; }
+  .inner { max-width: 520px; }
+  .check { width: 64px; height: 64px; background: #e1f5ee; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; }
+  .check svg { width: 28px; height: 28px; stroke: #1a9e6e; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  h1 { font-family: 'DM Serif Display', serif; font-size: 30px; color: #1a1a1a; margin-bottom: 1rem; }
+  p { font-size: 16px; color: #555; margin-bottom: 1rem; line-height: 1.7; }
+  .steps { background: #f8f9f7; border-radius: 14px; padding: 1.5rem; margin: 2rem 0; text-align: left; }
+  .step { display: flex; gap: 1rem; align-items: flex-start; padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .step:last-child { border-bottom: none; }
+  .step-num { width: 24px; height: 24px; border-radius: 50%; background: #1a9e6e; color: white; font-size: 12px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .step p { font-size: 14px; color: #555; margin: 0; }
+  .btn { display: inline-block; background: #1a9e6e; color: white; padding: 0.8rem 1.75rem; border-radius: 8px; font-size: 15px; font-weight: 500; margin-top: 1rem; transition: opacity 0.2s; }
+  .btn:hover { opacity: 0.88; }
+  footer { text-align: center; padding: 1.5rem; border-top: 1px solid rgba(0,0,0,0.08); font-size: 12px; color: #888; }
+  footer a { color: #888; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">faktio</a>
+</nav>
+
+<div class="content">
+  <div class="inner">
+    <div class="check">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h1>¡Gracias por registrarte!</h1>
+    <p>Hemos recibido tus datos correctamente. En menos de 24 horas te enviaremos un email con los siguientes pasos para empezar a vigilar la telefonía de tu empresa.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <p><strong>Revisa tu bandeja de entrada</strong> — Te enviaremos un email con el enlace al formulario completo de información.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <p><strong>Rellena el formulario completo</strong> — Solo tarda unos minutos y nos permite configurar tu vigilancia personalizada.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <p><strong>Faktio empieza a trabajar</strong> — En 48 horas recibirás tu primer informe con la situación actual de tu telefonía.</p>
+      </div>
+    </div>
+
+    <p style="font-size: 14px; color: #888;">¿Tienes alguna duda? Escríbenos a <a href="mailto:faktio@outlook.com">faktio@outlook.com</a></p>
+    <a href="/" class="btn">Volver a la web</a>
+  </div>
+</div>
+
+<footer>
+  © 2025 Faktio · <a href="/privacidad.html">Privacidad</a> · <a href="/aviso-legal.html">Aviso legal</a>
+</footer>
+
+</body>
+</html>

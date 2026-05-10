@@ -84,14 +84,21 @@
 
   .btn-nav:hover { opacity: 0.88; }
 
-  /* HERO IMAGE */
-  .hero-image {
+  /* IMAGE BLOCK */
+  .image-block {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .image-block img {
     width: 100%;
-    max-height: 420px;
+    height: 320px;
     object-fit: cover;
-    object-position: center top;
+    object-position: center;
     display: block;
-    border-bottom: 1px solid var(--border);
+    border-radius: 16px;
+    border: 1px solid var(--border);
   }
 
   /* HERO */
@@ -506,6 +513,8 @@
     .alertas-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
     .dark-quote blockquote { font-size: 20px; }
+    .image-block { padding: 0 1.25rem; }
+    .image-block img { height: 220px; border-radius: 12px; }
     footer { flex-direction: column; gap: 1rem; text-align: center; }
   }
 </style>
@@ -522,9 +531,6 @@
     <a href="#contacto" class="btn-nav">Contratar ahora</a>
   </div>
 </nav>
-
-<!-- HERO IMAGE -->
-<img src="hero.jpg" alt="Profesional revisando telefonía de empresa" class="hero-image">
 
 <!-- HERO -->
 <div style="max-width: 1000px; margin: 0 auto;">
@@ -577,6 +583,11 @@
     </div>
   </div>
 </section>
+
+<!-- IMAGE BLOCK -->
+<div class="image-block" style="padding-bottom: 4rem;">
+  <img src="hero.jpg" alt="Profesional revisando la telefonía de su empresa">
+</div>
 
 <!-- VENTAJAS -->
 <section class="alt" id="ventajas">
@@ -672,18 +683,4 @@
 <section class="cta-section" id="contacto">
   <h2>¿Cuánto estás pagando de más?</h2>
   <p>Regístrate en 5 minutos y en menos de 48 horas sabrás exactamente en qué situación está la telefonía de tu empresa.</p>
-  <a href="mailto:faktio@outlook.com" class="btn-primary" style="font-size: 15px; padding: 0.9rem 2.25rem;">Empezar ahora</a>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2025 Faktio · faktio.es</p>
-  <div class="footer-links">
-    <a href="#">Privacidad</a>
-    <a href="#">Condiciones</a>
-    <a href="mailto:faktio@outlook.com">Contacto</a>
-  </div>
-</footer>
-
-</body>
-</html>
+  <a href="mailto:faktio@outlook.com" class="btn-primary" style="font-size: 15px; padding: 0.9rem 2.25rem;">Empezar ahora</
